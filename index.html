@@ -22,98 +22,13 @@
             background-color: lightgray;
         }
     </style>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
 </head>
 
-<body>
+<body onload="updateView()">
     <div id="app"></div>
-    <script>
-        /*
-            CRUD 
-            Create = legge til ny
-            Read = vise (alle)
-            Update 
-            Delete = slette en farge
-        */
-
-        // model
-        let colors = ['red', 'green', 'blue', 'yellow'];
-        let deleted = [];
-        let isAdding = false;
-        let colorInput;
-
-        // view
-        updateView();
-        function updateView() {
-            let html = '';
-            for (let index = 0; index < colors.length; index++) {
-                let color = colors[index];
-                html += /*HTML*/`
-                    <div class="color">
-                        <div class="topBox">
-                            <div>${color}</div>
-                            <button onclick="deleteColor(${index})">x</button>
-                        </div>
-                        <div style="background-color: ${color}" class="box"></div>
-                    </div>                
-                `;
-
-            }
-
-            document.getElementById('app').innerHTML = /*HTML*/`
-                <h3>Farger</h3>
-                ${createAddColorHtml()}
-                <hr/>
-                <div class="colors">
-                    ${html}
-                </div>
-            `;
-        }
-
-        function createAddColorHtml() {
-            if (isAdding) {
-                return /*HTML*/`
-                    <br/>
-                    <input 
-                        type="text" 
-                        oninput="colorInput=this.value" 
-                        value="${colorInput ?? ''}"
-                        />
-                    <button onclick="addColor()">Legg til ny farge</button>
-                    <button onclick="cancelAddColor()">Avbryt</button>                
-                `;
-            } else {
-                return /*HTML*/`
-                    <button onclick="startAdd()">+</button>
-                `;
-            }
-        }
-
-        // controller
-        function addColor() {
-            if (!colorInput) return;
-            colors.push(colorInput);
-            isAdding = false;
-            colorInput = null;
-            updateView();
-        }
-
-        function deleteColor(index) {
-            const elements = colors.splice(index, 1);
-            deleted.push(elements[0]);
-            updateView();
-        }
-
-        function startAdd() {
-            isAdding = true;
-            updateView();
-        }
-
-        function cancelAddColor() {
-            isAdding = false;
-            updateView();
-        }
-
-    </script>
 </body>
 
 </html>
