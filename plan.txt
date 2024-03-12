@@ -5,3 +5,4 @@
    - sortering, filtrering, paging
 3: Intro Single Page Applications (SPA)
    - forskjellige sider
+   - hash/navigasjon

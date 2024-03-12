@@ -1,23 +1,11 @@
 function updateView() {
-    const themes = model.themes;
+    if (model.currentPage == 'preview') updateViewPreview();
+    else updateViewMain();
+}
+function updateViewMain() {
     let html = '';
-    for (let index = 0; index < themes.length; index++) {
-        let theme = themes[index];
-        html += /*HTML*/`
-            <div class="color">
-                <div class="topBox">
-                    <div>${theme.back} - ${theme.fore} - ${theme.highlight} - laget av ${theme.madeBy}</div>
-                    <button onclick="deleteTheme(${index})">x</button>
-                </div>
-                <div style="
-                    background-color: ${theme.back};
-                    color: ${theme.fore};
-                    " class="box">
-                    <span style="color: ${theme.highlight}">Eksempel-highlight</span>
-                    Eksempel-tekst                
-                </div>
-            </div>                
-        `;
+    for (let index = 0; index < model.themes.length; index++) {
+        html += createThemeHtml(index);
     }
 
     document.getElementById('app').innerHTML = /*HTML*/`
@@ -28,6 +16,52 @@ function updateView() {
             ${html}
         </div>
     `;
+}
+
+function updateViewPreview(){
+    let theme = model.themes[model.selectedThemeIndex];
+    document.getElementById('app').innerHTML = /*HTML*/`
+        <div style="
+                height: 95vh;
+                color: ${theme.fore};
+                background-color: ${theme.back};
+            ">
+            <h1 style="color: ${theme.highlight}">
+                Forhåndsvisning av ${theme.back} - ${theme.fore} - ${theme.highlight} - laget av ${theme.madeBy}
+            </h1>
+
+            <h2 style="color: ${theme.highlight}">What is Lorem Ipsum?</h2>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+            when an unknown printer took a galley of type and scrambled it to make a type 
+            specimen book. It has survived not only five centuries, but also the leap into 
+            electronic typesetting, remaining essentially unchanged. 
+
+            <button onclick="goToMainPage()">Avslutt</button>
+        </div>
+    `;
+}
+
+function createThemeHtml(index) {
+    let theme = model.themes[index];
+    return /*HTML*/ `
+            <div class="color">
+                <div class="topBox">
+                    <div>${theme.back} - ${theme.fore} - ${theme.highlight} - laget av ${theme.madeBy}</div>
+                    <div>
+                        <button onclick="previewTheme(${index})">Vis</button>
+                        <button onclick="deleteTheme(${index})">x</button>
+                    </div>
+                </div>
+                <div style="
+                    background-color: ${theme.back};
+                    color: ${theme.fore};
+                    " class="box">
+                    <span style="color: ${theme.highlight}">Eksempel-highlight</span>
+                    Eksempel-tekst                
+                </div>
+            </div>                
+        `;
 }
 
 function createAddColorHtml() {

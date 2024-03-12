@@ -27,3 +27,14 @@ function cancelAddColor() {
     model.isAdding = false;
     updateView();
 }
+
+function previewTheme(index){
+    model.selectedThemeIndex = index;
+    model.currentPage = 'preview';
+    updateView();
+}
+
+function goToMainPage(){
+    model.currentPage = null;
+    updateView();
+}

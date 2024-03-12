@@ -1,4 +1,6 @@
 const model = {
+    currentPage: null,
+    selectedThemeIndex: null,
     themes: [
         {
             fore: 'black',
@@ -18,7 +20,7 @@ const model = {
             highlight: 'blue',
             madeBy: 'per',
         },
-    ],
+    ],    
     isAdding: false,
     themeInput: {
         fore: '',
