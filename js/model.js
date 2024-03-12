@@ -20,5 +20,10 @@ const model = {
         },
     ],
     isAdding: false,
-    colorInput: null,
+    themeInput: {
+        fore: '',
+        back: '',
+        highlight: '',
+        madeBy: '',
+    },
 }

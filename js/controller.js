@@ -1,23 +1,29 @@
 function addColor() {
-    if (!colorInput) return;
-    themes.push(colorInput);
-    isAdding = false;
-    colorInput = null;
+    if (!model.themeInput) return;
+    const theme = model.themeInput;    
+    const themeCopy = JSON.parse(JSON.stringify(theme));
+    model.themes.push(themeCopy);
+    model.isAdding = false;
+    model.themeInput = {
+        fore: '',
+        back: '',
+        highlight: '',
+        madeBy: '',
+    };
     updateView();
 }
 
-function deleteColor(index) {
-    const elements = themes.splice(index, 1);
-    deleted.push(elements[0]);
+function deleteTheme(index) {
+    model.themes.splice(index, 1);
     updateView();
 }
 
 function startAdd() {
-    isAdding = true;
+    model.isAdding = true;
     updateView();
 }
 
 function cancelAddColor() {
-    isAdding = false;
+    model.isAdding = false;
     updateView();
 }

@@ -7,7 +7,7 @@ function updateView() {
             <div class="color">
                 <div class="topBox">
                     <div>${theme.back} - ${theme.fore} - ${theme.highlight} - laget av ${theme.madeBy}</div>
-                    <button onclick="deleteColor(${index})">x</button>
+                    <button onclick="deleteTheme(${index})">x</button>
                 </div>
                 <div style="
                     background-color: ${theme.back};
@@ -33,13 +33,32 @@ function updateView() {
 function createAddColorHtml() {
     if (model.isAdding) {
         return /*HTML*/`
-            <br/>
+            Forgrunnsfarge:<br/>
             <input 
                 type="text" 
-                oninput="model.colorInput=this.value" 
-                value="${model.colorInput ?? ''}"
-                />
-            <button onclick="addColor()">Legg til ny farge</button>
+                oninput="model.themeInput.fore=this.value" 
+                value="${model.themeInput.fore ?? ''}"
+                /><br/>
+            Bakgrunnsfarge:<br/>
+            <input 
+                type="text" 
+                oninput="model.themeInput.back=this.value" 
+                value="${model.themeInput.back ?? ''}"
+                /><br/>
+            Fremhevingsfarge:<br/>
+            <input 
+                type="text" 
+                oninput="model.themeInput.highlight=this.value" 
+                value="${model.themeInput.highlight ?? ''}"
+                /><br/>
+            Laget av:<br/>
+            <input 
+                type="text" 
+                oninput="model.themeInput.madeBy=this.value" 
+                value="${model.themeInput.madeBy ?? ''}"
+                /><br/>            
+
+            <button onclick="addColor()">Legg til ny theme</button>
             <button onclick="cancelAddColor()">Avbryt</button>                
         `;
     } else {
