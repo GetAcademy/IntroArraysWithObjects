@@ -61,7 +61,6 @@
 
             document.getElementById('app').innerHTML = /*HTML*/`
                 <h3>Farger</h3>
-                <button onclick="undo()">⤶</button>
                 ${createAddColorHtml()}
                 <hr/>
                 <div class="colors">
@@ -101,12 +100,6 @@
         function deleteColor(index) {
             const elements = colors.splice(index, 1);
             deleted.push(elements[0]);
-            updateView();
-        }
-
-        function undo() {
-            const color = deleted.pop();
-            colors.push(color);
             updateView();
         }
 

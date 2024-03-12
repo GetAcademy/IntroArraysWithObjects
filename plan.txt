@@ -1,6 +1,2 @@
-Lister / arrays
-
-- Intro i console
-- Eksempel med MVC 
-  - CRUD 
-- Vanlige operasjoner med Lister
+1: Oppgradere app til liste av objekter - color themes
+2: Intro Single Page Applications (SPA)
