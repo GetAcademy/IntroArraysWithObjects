@@ -1,5 +1,6 @@
 function updateView() {
     if (model.currentPage == 'preview') updateViewPreview();
+    else if (model.currentPage == 'terje') updateViewTerje();
     else updateViewMain();
 }
 function updateViewMain() {
@@ -15,6 +16,13 @@ function updateViewMain() {
         <div class="colors">
             ${html}
         </div>
+    `;
+}
+
+function updateViewTerje(){
+    document.getElementById('app').innerHTML = /*HTML*/`
+        <h1>Terje</h1>
+        <button onclick="goTo()">Avslutt</button>
     `;
 }
 
@@ -37,7 +45,8 @@ function updateViewPreview(){
             specimen book. It has survived not only five centuries, but also the leap into 
             electronic typesetting, remaining essentially unchanged. 
 
-            <button onclick="goToMainPage()">Avslutt</button>
+            <button onclick="goTo()">Avslutt</button>
+            <button onclick="goTo('terje')">Gå til Terje-siden</button>
         </div>
     `;
 }

@@ -34,7 +34,7 @@ function previewTheme(index){
     updateView();
 }
 
-function goToMainPage(){
-    model.currentPage = null;
+function goTo(page){
+    model.currentPage = page;
     updateView();
 }
