@@ -1,0 +1,6 @@
+Lister / arrays
+
+- Intro i console
+- Eksempel med MVC 
+  - CRUD 
+- Vanlige operasjoner med Lister
